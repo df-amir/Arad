@@ -160,3 +160,7 @@ C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.dll
 C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.SqlServer.dll
 C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.xml
 C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.SqlServer.xml
+C:\Users\ASUS\Documents\parvaz\bin\EntityFramework.dll
+C:\Users\ASUS\Documents\parvaz\bin\EntityFramework.SqlServer.dll
+C:\Users\ASUS\Documents\parvaz\bin\EntityFramework.xml
+C:\Users\ASUS\Documents\parvaz\bin\EntityFramework.SqlServer.xml
