@@ -12,18 +12,14 @@ namespace Arad.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Team_Account
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Family { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string NationalCode { get; set; }
-        public string FahterName { get; set; }
-        public Nullable<int> province { get; set; }
-        public Nullable<int> City { get; set; }
-        public Nullable<int> Ranc { get; set; }
+        public int TeamId { get; set; }
+        public int AccountId { get; set; }
+        public Nullable<int> Status { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

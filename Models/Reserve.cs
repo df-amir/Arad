@@ -12,18 +12,17 @@ namespace Arad.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Reserve
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Family { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string NationalCode { get; set; }
-        public string FahterName { get; set; }
-        public Nullable<int> province { get; set; }
-        public Nullable<int> City { get; set; }
-        public Nullable<int> Ranc { get; set; }
+        public int SalonSanceId { get; set; }
+        public int AccountId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string Token { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> FinalPrice { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual Salon_Sance Salon_Sance { get; set; }
     }
 }

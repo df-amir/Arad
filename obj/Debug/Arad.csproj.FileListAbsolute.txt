@@ -235,7 +235,14 @@ C:\Users\STOCKIR\Desktop\inter\Arad\obj\Debug\Arad.csproj.CoreCompileInputs.cach
 C:\Users\STOCKIR\Desktop\inter\Arad\obj\Debug\Arad.csproj.CopyComplete
 C:\Users\STOCKIR\Desktop\inter\Arad\obj\Debug\Arad.dll
 C:\Users\STOCKIR\Desktop\inter\Arad\obj\Debug\Arad.pdb
+<<<<<<< HEAD
 C:\Users\STOCKIR\Desktop\inter\Arad\bin\EntityFramework.dll
 C:\Users\STOCKIR\Desktop\inter\Arad\bin\EntityFramework.SqlServer.dll
 C:\Users\STOCKIR\Desktop\inter\Arad\bin\EntityFramework.xml
 C:\Users\STOCKIR\Desktop\inter\Arad\bin\EntityFramework.SqlServer.xml
+=======
+C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.dll
+C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.SqlServer.dll
+C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.xml
+C:\Users\Amir\Documents\Parvaz\Arad\bin\EntityFramework.SqlServer.xml
+>>>>>>> dc4ad8b5b5a5b030302aad86316c2e8a44ccb4fd

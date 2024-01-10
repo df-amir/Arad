@@ -10,7 +10,10 @@ namespace Arad.Classes
         public enum Roles
         {
             Admin = 1,
-            Client = 2
+            SalonOwner = 2,
+            TeamOwner = 3,
+            Coach = 4,
+            Athlete = 5
         }
     }
 }

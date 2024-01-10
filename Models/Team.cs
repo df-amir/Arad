@@ -12,31 +12,27 @@ namespace Arad.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Team
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Account()
+        public Team()
         {
             this.Request = new HashSet<Request>();
             this.Request1 = new HashSet<Request>();
-            this.Reserve = new HashSet<Reserve>();
             this.Team_Account = new HashSet<Team_Account>();
         }
     
         public int Id { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Password { get; set; }
-        public int RoleId { get; set; }
-        public bool IsActive { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> Ranc { get; set; }
+        public Nullable<int> Proviance { get; set; }
+        public Nullable<int> City { get; set; }
     
-        public virtual Role Role { get; set; }
-        public virtual Person Person { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Request { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Request1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserve> Reserve { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Team_Account> Team_Account { get; set; }
     }
