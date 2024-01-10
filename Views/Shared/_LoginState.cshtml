@@ -1,40 +1,21 @@
-﻿@using Arad.Models;
-@using Arad.Classes;
-
-@if (User.Identity.IsAuthenticated)
+﻿@if (User.Identity.IsAuthenticated)
 {
-    string _role;
-    using (AradEntities db = new AradEntities())
-    {
-        _role = db.Account.Where(q => q.PhoneNumber == User.Identity.Name)?.Select(q => q.Role.Title)?.FirstOrDefault() ?? null;
-    }
-<p>
-    @switch (_role)
-    {
-        case "Admin":
-            <a href="@Url.Action("Index", "AdminHome", new { area = "Admin" }, null)" class="btn btn-primary btn-sm">پنل مدیریت</a>
+    <p>
+        @if (User.IsInRole("Admin"))
+        {
+            <a href="@Url.Action("Index", "AdminHome", new { area = "Admin" }, null)" class="btn btn-primary btn-sm">Control panel</a>
             <span>|</span>
-            break;
-        case "SalonOwner":
-         
-            break;
-        case "TeamOwner":
-            <a href="@Url.Action("Index", "Team", new { area = "TeamOwner" }, null)" class="btn btn-primary btn-sm">مدیریت سالن‌ها</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Details", "UserInformations", new { email = User.Identity.Name }, null)" class="btn btn-primary btn-sm">User panel</a>
             <span>|</span>
-            break;
-        case "Coach":
-     
-            break;
-        case "Athlete":
-
-            break;
-
-    }
+        }
     <a href="@Url.Action("LogOff", "Home")" class="btn btn-danger btn-sm">LogOut</a> | @User.Identity.Name Wellcom
-</p>
+    </p>
 }
 else
-        {
+{
     <p><a href="@Url.Action("Register", "Home")" class="btn btn-success btn-sm">Register</a> | <a href="@Url.Action("Login", "Home")" class="btn btn-primary btn-sm">Login</a></p>
 
 }

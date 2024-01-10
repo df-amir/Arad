@@ -11,11 +11,7 @@ namespace Arad.Controllers
 {
     public class HomeController : Controller
     {
-        protected Models.AradEntities db { get; set; }
-        public HomeController()
-        {
-            db = new Models.AradEntities();
-        }
+        private AradEntities db = new AradEntities();
         public ActionResult Index()
         {
             return View();
@@ -25,7 +21,7 @@ namespace Arad.Controllers
         {
             return View();
         }
-         
+
         [HttpPost]
         public ActionResult Register([Bind(Include = "Id,PhoneNumber,Password,RoleId")] Account account)
         {
@@ -39,11 +35,9 @@ namespace Arad.Controllers
                     var _account = db.Account.Where(q => q.PhoneNumber == account.PhoneNumber)?.FirstOrDefault();
                     if (_account == null)
                     {
-                        account.IsActive = true;
+                        account.RoleId = (int)Enums.Roles.Client;
                         db.Account.Add(account);
                         db.SaveChanges();
-
-                        FormsAuthentication.SetAuthCookie(account.PhoneNumber, true);
                         return RedirectToAction("Index");
                     }
                     else
@@ -62,7 +56,7 @@ namespace Arad.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login([Bind(Include = "Id,PhoneNumber,Password,RoleId")] Account account)
+        public ActionResult Login([Bind(Include = "Id,PhoneNumber,Password,RoleId")] Account account, string ReturnUrl = "/")
         {
             try
             {
@@ -76,7 +70,7 @@ namespace Arad.Controllers
                         if (_account != null)
                         {
                             FormsAuthentication.SetAuthCookie(account.PhoneNumber, true);
-                            return RedirectToAction("Index");
+                            return Redirect(ReturnUrl);
                         }
                         else
                         {
