@@ -25,7 +25,7 @@ namespace Arad.Controllers
         {
             return View();
         }
-
+         
         [HttpPost]
         public ActionResult Register([Bind(Include = "Id,PhoneNumber,Password,RoleId")] Account account)
         {
