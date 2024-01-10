@@ -27,6 +27,26 @@
             </div>
         </div>
     </div>
+    <div class="top-bar" style="margin-bottom:20px;">
+        <div class="page-meta">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="top-phone">
+                        <span><i class="fa fa-phone"></i>09190618419</span>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center top-phone">
+                    @Html.Partial("_LoginState")
+                </div>
+                <div class="col-md-1 text-center top-phone">
+                    <a href="/ShopCart" class="btn btn-default btn-sm" style="border-radius:30px;">
+                        سبد خدید
+                        <span id="ShopCartCount" class="badge" style="background-color:#ff6969;">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
