@@ -4,6 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD
       <Diagram DiagramId="09c6384b08f948ae859b1889c538e7d2" Name="Diagram1" ZoomLevel="98">
         <EntityTypeShape EntityType="AradModel.Account" Width="1.5" PointX="3" PointY="8.875" />
         <EntityTypeShape EntityType="AradModel.Person" Width="1.5" PointX="5.25" PointY="17.375" />
@@ -32,6 +33,14 @@
         <AssociationConnector Association="AradModel.FK_Reserve_Salon_Sance" />
         <AssociationConnector Association="AradModel.FK_Salon_Sance_Salon" />
         <AssociationConnector Association="AradModel.FK_Salon_Sance_Sance" />
+=======
+      <Diagram DiagramId="421637ff10e54c88a66b09db34b293fb" Name="Diagram1">
+        <EntityTypeShape EntityType="AradModel.Account" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AradModel.Person" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AradModel.Role" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="AradModel.FK_Account_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="AradModel.FK_Person_Account" ManuallyRouted="false" />
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

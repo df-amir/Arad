@@ -4,69 +4,34 @@
     <EntitySetMapping Name="Account">
       <EntityTypeMapping TypeName="AradModel.Account">
         <MappingFragment StoreEntitySet="Account">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Person">
       <EntityTypeMapping TypeName="AradModel.Person">
         <MappingFragment StoreEntitySet="Person">
-          <ScalarProperty Name="Ranc" ColumnName="Ranc" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="province" ColumnName="province" />
-          <ScalarProperty Name="FahterName" ColumnName="FahterName" />
-          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Play">
-      <EntityTypeMapping TypeName="AradModel.Play">
-        <MappingFragment StoreEntitySet="Play">
-          <ScalarProperty Name="GuestTeamScore" ColumnName="GuestTeamScore" />
-          <ScalarProperty Name="HostTeamScore" ColumnName="HostTeamScore" />
-          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Request">
-      <EntityTypeMapping TypeName="AradModel.Request">
-        <MappingFragment StoreEntitySet="Request">
-          <ScalarProperty Name="RefereeAccountId" ColumnName="RefereeAccountId" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="GuestTeamId" ColumnName="GuestTeamId" />
-          <ScalarProperty Name="HostTeamId" ColumnName="HostTeamId" />
-          <ScalarProperty Name="CreatorAccountId" ColumnName="CreatorAccountId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Reserve">
-      <EntityTypeMapping TypeName="AradModel.Reserve">
-        <MappingFragment StoreEntitySet="Reserve">
-          <ScalarProperty Name="FinalPrice" ColumnName="FinalPrice" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="Token" ColumnName="Token" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-          <ScalarProperty Name="SalonSanceId" ColumnName="SalonSanceId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="FahterName" ColumnName="FahterName" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="City" ColumnName="City" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Role">
       <EntityTypeMapping TypeName="AradModel.Role">
         <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+<<<<<<< HEAD
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -116,6 +81,8 @@
           <ScalarProperty Name="AccountId" ColumnName="AccountId" />
           <ScalarProperty Name="TeamId" ColumnName="TeamId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+=======
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

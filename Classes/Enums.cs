@@ -12,6 +12,7 @@ namespace Arad.Classes
         public enum Roles
         {
             Admin = 1,
+<<<<<<< HEAD
             SalonOwner = 2,
             TeamOwner = 3,
             Coach = 4,
@@ -46,6 +47,9 @@ namespace Arad.Classes
                    .First()
                    .GetCustomAttribute<DisplayAttribute>()
                     .Name;
+=======
+            Client = 2
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
         }
     }
 }

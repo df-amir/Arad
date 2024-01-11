@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AradModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<<<<<<< HEAD
   <EntityContainer Name="AradEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Account" EntityType="AradModel.Account" />
     <EntitySet Name="Person" EntityType="AradModel.Person" />
@@ -77,11 +78,14 @@
       <End Role="Salon_Sance" EntitySet="Salon_Sance" />
     </AssociationSet>
   </EntityContainer>
+=======
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+<<<<<<< HEAD
     <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="RoleId" Type="Int32" />
@@ -95,12 +99,21 @@
     <NavigationProperty Name="Team" Relationship="AradModel.FK_Team_Account" FromRole="Account" ToRole="Team" />
     <NavigationProperty Name="Team1" Relationship="AradModel.FK_Team_Account1" FromRole="Account" ToRole="Team" />
     <NavigationProperty Name="Team_Account" Relationship="AradModel.FK_Team_Account_Account" FromRole="Account" ToRole="Team_Account" />
+=======
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Person_Account" FromRole="Account" ToRole="Person" />
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   </EntityType>
   <EntityType Name="Person">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
     <Property Name="Family" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
@@ -151,12 +164,23 @@
     <Property Name="FinalPrice" Type="Int32" />
     <NavigationProperty Name="Account" Relationship="AradModel.FK_Reserve_Account" FromRole="Reserve" ToRole="Account" />
     <NavigationProperty Name="Salon_Sance" Relationship="AradModel.FK_Reserve_Salon_Sance" FromRole="Reserve" ToRole="Salon_Sance" />
+=======
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Family" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FahterName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="province" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Person_Account" FromRole="Person" ToRole="Account" />
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Account" Relationship="AradModel.FK_Account_Role" FromRole="Role" ToRole="Account" />
   </EntityType>
@@ -217,6 +241,14 @@
   <Association Name="FK_Account_Role">
     <End Type="AradModel.Role" Role="Role" Multiplicity="0..1" />
     <End Type="AradModel.Account" Role="Account" Multiplicity="*" />
+=======
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK_Account_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
     <ReferentialConstraint>
       <Principal Role="Role">
         <PropertyRef Name="Id" />
@@ -227,8 +259,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Person_Account">
-    <End Type="AradModel.Account" Role="Account" Multiplicity="1" />
-    <End Type="AradModel.Person" Role="Person" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Account">
         <PropertyRef Name="Id" />
@@ -238,6 +270,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK_Request_Account">
     <End Type="AradModel.Account" Role="Account" Multiplicity="0..1" />
     <End Type="AradModel.Request" Role="Request" Multiplicity="*" />
@@ -418,4 +451,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+=======
+  <EntityContainer Name="AradEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Account" EntityType="Self.Account" />
+    <EntitySet Name="Person" EntityType="Self.Person" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Person_Account" Association="Self.FK_Person_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+  </EntityContainer>
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
 </Schema>

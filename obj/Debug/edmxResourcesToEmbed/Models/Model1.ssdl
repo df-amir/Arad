@@ -15,6 +15,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Name" Type="nvarchar" MaxLength="32" />
     <Property Name="Family" Type="nvarchar" MaxLength="32" />
     <Property Name="Age" Type="int" />
@@ -56,6 +57,15 @@
     <Property Name="Token" Type="nvarchar" MaxLength="8" />
     <Property Name="IsDeleted" Type="bit" />
     <Property Name="FinalPrice" Type="int" />
+=======
+    <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Family" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="NationalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="FahterName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="province" Type="int" Nullable="false" />
+    <Property Name="City" Type="int" Nullable="false" />
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -64,6 +74,7 @@
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="50" />
   </EntityType>
+<<<<<<< HEAD
   <EntityType Name="Salon">
     <Key>
       <PropertyRef Name="Id" />
@@ -117,6 +128,8 @@
     <Property Name="AccountId" Type="int" />
     <Property Name="Status" Type="int" />
   </EntityType>
+=======
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   <Association Name="FK_Account_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -141,6 +154,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK_Play_Request">
     <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
     <End Role="Play" Type="Self.Play" Multiplicity="*" />
@@ -309,18 +323,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+=======
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   <EntityContainer Name="AradModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Play" EntityType="Self.Play" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Reserve" EntityType="Self.Reserve" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Salon" EntityType="Self.Salon" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Salon-Sance" EntityType="Self.Salon-Sance" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sance" EntityType="Self.Sance" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Team-Account" EntityType="Self.Team-Account" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="Account" EntitySet="Account" />
@@ -329,6 +337,7 @@
       <End Role="Account" EntitySet="Account" />
       <End Role="Person" EntitySet="Person" />
     </AssociationSet>
+<<<<<<< HEAD
     <AssociationSet Name="FK_Play_Request" Association="Self.FK_Play_Request">
       <End Role="Request" EntitySet="Request" />
       <End Role="Play" EntitySet="Play" />
@@ -385,5 +394,7 @@
       <End Role="Team" EntitySet="Team" />
       <End Role="Team-Account" EntitySet="Team-Account" />
     </AssociationSet>
+=======
+>>>>>>> aa73389685fc8c13d5ef59744930e1a7f20df9ed
   </EntityContainer>
 </Schema>
