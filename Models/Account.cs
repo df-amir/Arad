@@ -20,14 +20,17 @@ namespace Arad.Models
             this.Request = new HashSet<Request>();
             this.Request1 = new HashSet<Request>();
             this.Reserve = new HashSet<Reserve>();
+            this.Salon = new HashSet<Salon>();
+            this.Team = new HashSet<Team>();
+            this.Team1 = new HashSet<Team>();
             this.Team_Account = new HashSet<Team_Account>();
         }
     
         public int Id { get; set; }
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
-        public int RoleId { get; set; }
-        public bool IsActive { get; set; }
+        public Nullable<int> RoleId { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     
         public virtual Role Role { get; set; }
         public virtual Person Person { get; set; }
@@ -37,6 +40,12 @@ namespace Arad.Models
         public virtual ICollection<Request> Request1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reserve> Reserve { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Salon> Salon { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Team> Team { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Team> Team1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Team_Account> Team_Account { get; set; }
     }

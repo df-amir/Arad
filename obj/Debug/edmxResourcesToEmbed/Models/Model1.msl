@@ -83,16 +83,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Salon_Sance">
-      <EntityTypeMapping TypeName="AradModel.Salon_Sance">
-        <MappingFragment StoreEntitySet="Salon-Sance">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="SanceId" ColumnName="SanceId" />
-          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Sance">
       <EntityTypeMapping TypeName="AradModel.Sance">
         <MappingFragment StoreEntitySet="Sance">
@@ -108,6 +98,8 @@
     <EntitySetMapping Name="Team">
       <EntityTypeMapping TypeName="AradModel.Team">
         <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="CoachAccounId" ColumnName="CoachAccounId" />
+          <ScalarProperty Name="OwnerAccountId" ColumnName="OwnerAccountId" />
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="Proviance" ColumnName="Proviance" />
           <ScalarProperty Name="Ranc" ColumnName="Ranc" />
@@ -123,6 +115,16 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="AccountId" ColumnName="AccountId" />
           <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salon_Sance">
+      <EntityTypeMapping TypeName="AradModel.Salon_Sance">
+        <MappingFragment StoreEntitySet="Salon-Sance">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SanceId" ColumnName="SanceId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

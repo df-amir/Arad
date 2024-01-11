@@ -15,7 +15,7 @@ namespace Arad.Models
     public partial class Play
     {
         public int Id { get; set; }
-        public int RequestId { get; set; }
+        public Nullable<int> RequestId { get; set; }
         public Nullable<int> HostTeamScore { get; set; }
         public Nullable<int> GuestTeamScore { get; set; }
     

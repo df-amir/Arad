@@ -21,12 +21,12 @@ namespace Arad.Models
         }
     
         public int Id { get; set; }
-        public int CreatorAccountId { get; set; }
-        public int HostTeamId { get; set; }
-        public int GuestTeamId { get; set; }
+        public Nullable<int> CreatorAccountId { get; set; }
+        public Nullable<int> HostTeamId { get; set; }
+        public Nullable<int> GuestTeamId { get; set; }
         public Nullable<bool> Status { get; set; }
         public Nullable<int> Type { get; set; }
-        public int RefereeAccountId { get; set; }
+        public Nullable<int> RefereeAccountId { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Account Account1 { get; set; }

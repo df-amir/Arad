@@ -32,9 +32,9 @@ namespace Arad.Models
         public virtual DbSet<Reserve> Reserve { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Salon> Salon { get; set; }
-        public virtual DbSet<Salon_Sance> Salon_Sance { get; set; }
         public virtual DbSet<Sance> Sance { get; set; }
         public virtual DbSet<Team> Team { get; set; }
         public virtual DbSet<Team_Account> Team_Account { get; set; }
+        public virtual DbSet<Salon_Sance> Salon_Sance { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Arad.Classes;
 using Arad.Models;
 
 namespace Arad.Areas.TeamOwner.Controllers
@@ -35,22 +36,27 @@ namespace Arad.Areas.TeamOwner.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.CoachAccounId = new SelectList(db.Account.Where(q => q.RoleId == (int)Enums.Roles.Coach), "Id", "PhoneNumber");
             return View();
         }
 
-        // POST: TeamOwner/Team/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,CreatedDate,Ranc,Proviance,City")] Team team)
+        public ActionResult Create([Bind(Include = "Id,Name,CreatedDate,Ranc,Proviance,City,CoachAccounId")] Team team)
         {
             if (ModelState.IsValid)
             {
+                int _accountId = 0;
+                using (AradEntities db = new AradEntities())
+                    _accountId = db.Account.FirstOrDefault(q => q.PhoneNumber == User.Identity.Name)?.Id ?? 0;
+
+                team.OwnerAccountId = _accountId;
                 db.Team.Add(team);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.CoachAccounId = new SelectList(db.Account.Where(q => q.RoleId == (int)Enums.Roles.Coach), "Id", "PhoneNumber", team.CoachAccounId);
 
             return View(team);
         }
@@ -66,6 +72,10 @@ namespace Arad.Areas.TeamOwner.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.OwnerAccountId = new SelectList(db.Account.Where(q => q.RoleId == (int)Enums.Roles.TeamOwner), "Id", "PhoneNumber", team.OwnerAccountId);
+            ViewBag.CoachAccounId = new SelectList(db.Account.Where(q => q.RoleId == (int)Enums.Roles.Coach), "Id", "PhoneNumber", team.CoachAccounId);
+
             return View(team);
         }
 
@@ -74,7 +84,7 @@ namespace Arad.Areas.TeamOwner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,CreatedDate,Ranc,Proviance,City")] Team team)
+        public ActionResult Edit([Bind(Include = "Id,Name,CreatedDate,Ranc,Proviance,City,OwnerAccountId,CoachAccounId")] Team team)
         {
             if (ModelState.IsValid)
             {
@@ -82,6 +92,10 @@ namespace Arad.Areas.TeamOwner.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.OwnerAccountId = new SelectList(db.Account.Where(q => q.RoleId == (int)Enums.Roles.TeamOwner), "Id", "PhoneNumber", team.OwnerAccountId);
+            ViewBag.CoachAccounId = new SelectList(db.Account.Where(q => q.RoleId == (int)Enums.Roles.Coach), "Id", "PhoneNumber", team.CoachAccounId);
+
             return View(team);
         }
 

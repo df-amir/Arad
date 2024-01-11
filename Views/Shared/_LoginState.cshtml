@@ -8,33 +8,38 @@
     {
         _role = db.Account.Where(q => q.PhoneNumber == User.Identity.Name)?.Select(q => q.Role.Title)?.FirstOrDefault() ?? null;
     }
-<p>
-    @switch (_role)
-    {
-        case "Admin":
-            <a href="@Url.Action("Index", "AdminHome", new { area = "Admin" }, null)" class="btn btn-primary btn-sm">پنل مدیریت</a>
-            <span>|</span>
-            break;
-        case "SalonOwner":
-         
-            break;
-        case "TeamOwner":
-            <a href="@Url.Action("Index", "Team", new { area = "TeamOwner" }, null)" class="btn btn-primary btn-sm">مدیریت سالن‌ها</a>
-            <span>|</span>
-            break;
-        case "Coach":
-     
-            break;
-        case "Athlete":
+    <p>
+        @switch (_role)
+        {
+            case "Admin":
+                <a href="@Url.Action("Index", "AdminHome", new { area = "Admin" }, null)" class="btn btn-primary btn-sm">پنل مدیریت</a>
+                <span>|</span>
+                break;
+            case "SalonOwner":
+                <a href="@Url.Action("Index", "Salon", new { area = "SalonOwner" }, null)" class="btn btn-primary btn-sm">مدیریت مجموعه‌ها</a>
+                <span>|</span>
+                break;
+            case "TeamOwner":
+                <a href="@Url.Action("Index", "Team", new { area = "TeamOwner" }, null)" class="btn btn-primary btn-sm">مدیریت تیم‌ها</a>
+                <span>|</span>
+                break;
+            case "Coach":
 
-            break;
+                break;
+            case "Athlete":
 
-    }
-    <a href="@Url.Action("LogOff", "Home")" class="btn btn-danger btn-sm">LogOut</a> | @User.Identity.Name Wellcom
-</p>
+                break;
+            case "Referee":
+                <a href="@Url.Action("Index", "Play", new { area = "Referee" }, null)" class="btn btn-primary btn-sm">مدیریت داوری‌ها</a>
+                <span>|</span>
+                break;
+
+        }
+        <a href="@Url.Action("LogOff", "Home")" class="btn btn-danger btn-sm">LogOut</a> | @User.Identity.Name Wellcom
+    </p>
 }
 else
-        {
+{
     <p><a href="@Url.Action("Register", "Home")" class="btn btn-success btn-sm">Register</a> | <a href="@Url.Action("Login", "Home")" class="btn btn-primary btn-sm">Login</a></p>
 
 }

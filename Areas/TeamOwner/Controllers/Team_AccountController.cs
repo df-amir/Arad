@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Arad.Classes;
 using Arad.Models;
 
 namespace Arad.Areas.TeamOwner.Controllers
@@ -41,15 +42,13 @@ namespace Arad.Areas.TeamOwner.Controllers
             return View();
         }
 
-        // POST: TeamOwner/Team_Account/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TeamId,AccountId,Status")] Team_Account team_Account)
+        public ActionResult Create([Bind(Include = "Id,TeamId,AccountId")] Team_Account team_Account)
         {
             if (ModelState.IsValid)
             {
+                team_Account.Status = (int)Enums.Team_Account_Status.Join;
                 db.Team_Account.Add(team_Account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -73,12 +72,18 @@ namespace Arad.Areas.TeamOwner.Controllers
             }
             ViewBag.AccountId = new SelectList(db.Account, "Id", "PhoneNumber", team_Account.AccountId);
             ViewBag.TeamId = new SelectList(db.Team, "Id", "Name", team_Account.TeamId);
+
+            var ListPlaqueType = new List<SelectListItem>();
+            foreach (Enums.Team_Account_Status itemEnum in (Enums.Team_Account_Status[])Enum.GetValues(typeof(Enums.Team_Account_Status)))
+                ListPlaqueType.Add(new SelectListItem() { Value = ((byte)itemEnum).ToString(), Text = itemEnum.EnumPersianName() });
+            foreach (var plaqueType in ListPlaqueType)
+                if (plaqueType.Value == team_Account.Status.ToString())
+                    plaqueType.Selected = true;
+            ViewBag.Status = ListPlaqueType;
+
             return View(team_Account);
         }
 
-        // POST: TeamOwner/Team_Account/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,TeamId,AccountId,Status")] Team_Account team_Account)
@@ -91,6 +96,15 @@ namespace Arad.Areas.TeamOwner.Controllers
             }
             ViewBag.AccountId = new SelectList(db.Account, "Id", "PhoneNumber", team_Account.AccountId);
             ViewBag.TeamId = new SelectList(db.Team, "Id", "Name", team_Account.TeamId);
+
+            var ListPlaqueType = new List<SelectListItem>();
+            foreach (Enums.Team_Account_Status itemEnum in (Enums.Team_Account_Status[])Enum.GetValues(typeof(Enums.Team_Account_Status)))
+                ListPlaqueType.Add(new SelectListItem() { Value = ((byte)itemEnum).ToString(), Text = itemEnum.EnumPersianName() });
+            foreach (var plaqueType in ListPlaqueType)
+                if (plaqueType.Value == team_Account.Status.ToString())
+                    plaqueType.Selected = true;
+            ViewBag.Status = ListPlaqueType;
+
             return View(team_Account);
         }
 

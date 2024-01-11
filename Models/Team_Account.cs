@@ -15,8 +15,8 @@ namespace Arad.Models
     public partial class Team_Account
     {
         public int Id { get; set; }
-        public int TeamId { get; set; }
-        public int AccountId { get; set; }
+        public Nullable<int> TeamId { get; set; }
+        public Nullable<int> AccountId { get; set; }
         public Nullable<int> Status { get; set; }
     
         public virtual Account Account { get; set; }

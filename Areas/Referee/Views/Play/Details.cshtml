@@ -1,0 +1,42 @@
+﻿@model Arad.Models.Play
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Play</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HostTeamScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HostTeamScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuestTeamScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuestTeamScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Request.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Request.Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

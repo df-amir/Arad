@@ -25,8 +25,9 @@ namespace Arad.Models
         public string Address { get; set; }
         public Nullable<int> Province { get; set; }
         public Nullable<int> City { get; set; }
-        public int OwnerAccountId { get; set; }
+        public Nullable<int> OwnerAccountId { get; set; }
     
+        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salon_Sance> Salon_Sance { get; set; }
     }

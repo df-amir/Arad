@@ -15,8 +15,8 @@ namespace Arad.Models
     public partial class Reserve
     {
         public int Id { get; set; }
-        public int SalonSanceId { get; set; }
-        public int AccountId { get; set; }
+        public Nullable<int> SalonSanceId { get; set; }
+        public Nullable<int> AccountId { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Token { get; set; }
         public Nullable<bool> IsDeleted { get; set; }

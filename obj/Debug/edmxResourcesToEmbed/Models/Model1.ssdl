@@ -5,10 +5,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="RoleId" Type="int" Nullable="false" />
-    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -29,7 +29,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RequestId" Type="int" Nullable="false" />
+    <Property Name="RequestId" Type="int" />
     <Property Name="HostTeamScore" Type="int" />
     <Property Name="GuestTeamScore" Type="int" />
   </EntityType>
@@ -38,20 +38,20 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CreatorAccountId" Type="int" Nullable="false" />
-    <Property Name="HostTeamId" Type="int" Nullable="false" />
-    <Property Name="GuestTeamId" Type="int" Nullable="false" />
+    <Property Name="CreatorAccountId" Type="int" />
+    <Property Name="HostTeamId" Type="int" />
+    <Property Name="GuestTeamId" Type="int" />
     <Property Name="Status" Type="bit" />
     <Property Name="Type" Type="int" />
-    <Property Name="RefereeAccountId" Type="int" Nullable="false" />
+    <Property Name="RefereeAccountId" Type="int" />
   </EntityType>
   <EntityType Name="Reserve">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SalonSanceId" Type="int" Nullable="false" />
-    <Property Name="AccountId" Type="int" Nullable="false" />
+    <Property Name="SalonSanceId" Type="int" />
+    <Property Name="AccountId" Type="int" />
     <Property Name="Date" Type="datetime" />
     <Property Name="Token" Type="nvarchar" MaxLength="8" />
     <Property Name="IsDeleted" Type="bit" />
@@ -62,7 +62,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Salon">
     <Key>
@@ -73,16 +73,16 @@
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="Province" Type="int" />
     <Property Name="City" Type="int" />
-    <Property Name="OwnerAccountId" Type="int" Nullable="false" />
+    <Property Name="OwnerAccountId" Type="int" />
   </EntityType>
   <EntityType Name="Salon-Sance">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SalonId" Type="int" Nullable="false" />
-    <Property Name="SanceId" Type="int" Nullable="false" />
-    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="SalonId" Type="int" />
+    <Property Name="SanceId" Type="int" />
+    <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityType Name="Sance">
     <Key>
@@ -105,18 +105,20 @@
     <Property Name="Ranc" Type="int" />
     <Property Name="Proviance" Type="int" />
     <Property Name="City" Type="int" />
+    <Property Name="OwnerAccountId" Type="int" />
+    <Property Name="CoachAccounId" Type="int" />
   </EntityType>
   <EntityType Name="Team-Account">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TeamId" Type="int" Nullable="false" />
-    <Property Name="AccountId" Type="int" Nullable="false" />
+    <Property Name="TeamId" Type="int" />
+    <Property Name="AccountId" Type="int" />
     <Property Name="Status" Type="int" />
   </EntityType>
   <Association Name="FK_Account_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
@@ -140,7 +142,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Play_Request">
-    <End Role="Request" Type="Self.Request" Multiplicity="1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
     <End Role="Play" Type="Self.Play" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Request">
@@ -152,7 +154,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Request_Account">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
     <End Role="Request" Type="Self.Request" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Account">
@@ -164,7 +166,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Request_Account1">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
     <End Role="Request" Type="Self.Request" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Account">
@@ -176,7 +178,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Request_Team">
-    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
     <End Role="Request" Type="Self.Request" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Team">
@@ -188,7 +190,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Request_Team1">
-    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
     <End Role="Request" Type="Self.Request" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Team">
@@ -200,7 +202,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reserve_Account">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
     <End Role="Reserve" Type="Self.Reserve" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Account">
@@ -212,7 +214,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reserve_Salon-Sance">
-    <End Role="Salon-Sance" Type="Self.Salon-Sance" Multiplicity="1" />
+    <End Role="Salon-Sance" Type="Self.Salon-Sance" Multiplicity="0..1" />
     <End Role="Reserve" Type="Self.Reserve" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Salon-Sance">
@@ -223,8 +225,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Salon_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Salon" Type="Self.Salon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Salon">
+        <PropertyRef Name="OwnerAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Salon-Sance_Salon">
-    <End Role="Salon" Type="Self.Salon" Multiplicity="1" />
+    <End Role="Salon" Type="Self.Salon" Multiplicity="0..1" />
     <End Role="Salon-Sance" Type="Self.Salon-Sance" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Salon">
@@ -236,7 +250,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Salon-Sance_Sance">
-    <End Role="Sance" Type="Self.Sance" Multiplicity="1" />
+    <End Role="Sance" Type="Self.Sance" Multiplicity="0..1" />
     <End Role="Salon-Sance" Type="Self.Salon-Sance" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sance">
@@ -247,8 +261,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Team_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Team" Type="Self.Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="OwnerAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Team_Account1">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Team" Type="Self.Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="CoachAccounId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Team-Account_Account">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
     <End Role="Team-Account" Type="Self.Team-Account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Account">
@@ -260,7 +298,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Team-Account_Team">
-    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
     <End Role="Team-Account" Type="Self.Team-Account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Team">
@@ -319,6 +357,10 @@
       <End Role="Salon-Sance" EntitySet="Salon-Sance" />
       <End Role="Reserve" EntitySet="Reserve" />
     </AssociationSet>
+    <AssociationSet Name="FK_Salon_Account" Association="Self.FK_Salon_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Salon" EntitySet="Salon" />
+    </AssociationSet>
     <AssociationSet Name="FK_Salon-Sance_Salon" Association="Self.FK_Salon-Sance_Salon">
       <End Role="Salon" EntitySet="Salon" />
       <End Role="Salon-Sance" EntitySet="Salon-Sance" />
@@ -326,6 +368,14 @@
     <AssociationSet Name="FK_Salon-Sance_Sance" Association="Self.FK_Salon-Sance_Sance">
       <End Role="Sance" EntitySet="Sance" />
       <End Role="Salon-Sance" EntitySet="Salon-Sance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Team_Account" Association="Self.FK_Team_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Team" EntitySet="Team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Team_Account1" Association="Self.FK_Team_Account1">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Team" EntitySet="Team" />
     </AssociationSet>
     <AssociationSet Name="FK_Team-Account_Account" Association="Self.FK_Team-Account_Account">
       <End Role="Account" EntitySet="Account" />
