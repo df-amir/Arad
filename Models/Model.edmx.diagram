@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd1754e0785f4ae09556d995c8e48b7f" Name="Diagram1" ZoomLevel="33">
+        <EntityTypeShape EntityType="AradModel.Account" Width="1.5" PointX="2.125" PointY="8" />
+        <EntityTypeShape EntityType="AradModel.Person" Width="1.5" PointX="5" PointY="19.375" />
+        <EntityTypeShape EntityType="AradModel.Play" Width="1.5" PointX="9.75" PointY="16.625" />
+        <EntityTypeShape EntityType="AradModel.Reserve" Width="1.5" PointX="5.375" PointY="10.5" />
+        <EntityTypeShape EntityType="AradModel.Role" Width="1.5" PointX="0.5" PointY="10.125" />
+        <EntityTypeShape EntityType="AradModel.Salon" Width="1.5" PointX="3.25" PointY="3.75" />
+        <EntityTypeShape EntityType="AradModel.Sance" Width="1.5" PointX="10.25" PointY="3.125" />
+        <EntityTypeShape EntityType="AradModel.Team" Width="1.5" PointX="0.75" PointY="16.25" />
+        <EntityTypeShape EntityType="AradModel.Team_Account" Width="1.5" PointX="8.5" PointY="13.375" />
+        <AssociationConnector Association="AradModel.FK_Account_Role" />
+        <AssociationConnector Association="AradModel.FK_Person_Account" />
+        <AssociationConnector Association="AradModel.FK_Reserve_Account" />
+        <AssociationConnector Association="AradModel.FK_Salon_Account" />
+        <AssociationConnector Association="AradModel.FK_Team_Account" />
+        <AssociationConnector Association="AradModel.FK_Team_Account1" />
+        <AssociationConnector Association="AradModel.FK_Team_Account_Account" />
+        <AssociationConnector Association="AradModel.FK_Team_Account_Team" />
+        <EntityTypeShape EntityType="AradModel.Request" Width="1.5" PointX="10.625" PointY="7.125" />
+        <EntityTypeShape EntityType="AradModel.Salon_Sance" Width="1.5" PointX="6.625" PointY="4.75" />
+        <AssociationConnector Association="AradModel.FK_Request_Account" />
+        <AssociationConnector Association="AradModel.FK_Request_Account1" />
+        <AssociationConnector Association="AradModel.FK_Play_Request" />
+        <AssociationConnector Association="AradModel.FK_Request_Salon_Sance" />
+        <AssociationConnector Association="AradModel.FK_Request_Team" />
+        <AssociationConnector Association="AradModel.FK_Request_Team1" />
+        <AssociationConnector Association="AradModel.FK_Reserve_Salon_Sance" />
+        <AssociationConnector Association="AradModel.FK_Salon_Sance_Salon" />
+        <AssociationConnector Association="AradModel.FK_Salon_Sance_Sance" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

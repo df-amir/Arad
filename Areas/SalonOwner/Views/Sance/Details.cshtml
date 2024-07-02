@@ -1,0 +1,58 @@
+﻿@model Arad.Models.Sance
+
+@{
+    ViewBag.Title = "جزئیات سانس";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>سانس</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            تاریخ سانس
+        </dt>
+
+        <dd>
+            @Arad.Classes.DateTimeConvertor.ToShamsi(Model.Date)
+        </dd>
+
+        <dt>
+            ساعت شروع سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            ساعت پایان سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            مبلغ سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            درصد تخفیف
+        </dt>
+
+        <dd>
+            @(Model.Discount > 0 ? "%" : "")@Html.DisplayFor(model => model.Discount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+</p>

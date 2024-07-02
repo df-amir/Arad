@@ -1,0 +1,48 @@
+﻿@model Arad.Models.Play
+
+@{
+    ViewBag.Title = "حذف بازی";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حدف این مندج اطمینان دارید؟</h3>
+<div>
+    <h4>بازی</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            امتیاز تیم میزبان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HostTeamScore)
+        </dd>
+
+        <dt>
+            امتیاز تیم میهمان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuestTeamScore)
+        </dd>
+
+        <dt>
+            دخواست کننده
+        </dt>
+
+        <dd>
+            @(Model.Request.Account.Person.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

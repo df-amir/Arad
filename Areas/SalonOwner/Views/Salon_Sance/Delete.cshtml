@@ -1,0 +1,48 @@
+﻿@model Arad.Models.Salon_Sance
+
+@{
+    ViewBag.Title = "حذف سانس سالن";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حدف این مندج اطمینان دارید؟</h3>
+<div>
+    <h4>مدیریت سانس</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            وضعیت رزرو
+        </dt>
+
+        <dd>
+            @(Model.Status == true ? "آزاد" : "رزرو شده")
+        </dd>
+
+        <dt>
+            مجموعه ورزشی
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salon.Title)
+        </dd>
+
+        <dt>
+            شروع سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sance.StartTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

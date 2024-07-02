@@ -1,0 +1,266 @@
+﻿@model IEnumerable<Arad.Models.Team>
+@{
+    ViewBag.Title = "تیم‌ها";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="section parallax-container breadcrumbs-wrap" data-parallax-img="~/Content/NewContent/images//bg-breadcrumbs-1-1920x726.jpg" dir="rtl">
+    <div class="material-parallax parallax"><img src="~/Content/NewContent/images//bg-breadcrumbs-1-1920x726.jpg" alt="" style="display: block; transform: translate3d(-50%, 304px, 0px);"></div>
+    <div class="parallax-content breadcrumbs-custom context-dark">
+        <div class="container">
+            <h3 class="breadcrumbs-custom-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">جدول تیم ها</font></font></h3>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">صفحه اصلی</font></font></a></li>
+                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">تیم</font></font></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="section section-sm bg-gray-100" dir="rtl">
+    <div class="container">
+        <div class="row row-50">
+            <div class="col-lg-12 col-xl-12">
+                <div class="row row-50">
+                    <div class="col-12">
+                        <!-- Heading Component-->
+                        <article class="heading-component">
+                            <div class="heading-component-inner">
+                                <h5 class="heading-component-title">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                            جدول تیم‌ها
+                                        </font>
+                                    </font>
+                                </h5>
+
+                            </div>
+                        </article>
+                        <div class="card-standing card-group-custom card-standing-index" id="accordion1" role="tablist" aria-multiselectable="false">
+                            <div class="card-standing-caption">
+                                <div class="card-standing-caption-aside">
+                                    <div class="card-standing-team"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">تیم</font></font></div>
+                                    <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">امتیاز</font></font></div>
+                                    <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">مالک</font></font></div>
+                                    <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">سرمربی</font></font></div>
+                                </div>
+                            </div>
+                            <!-- Bootstrap card-->
+
+                            @foreach (var item in Model)
+                            {
+                                <article class="card card-custom" dir="rtl">
+                                    <div class="card-header" id="accordion1Heading1" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Name</font></font></div>
+                                                    <div class="card-standing-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">همدان</font></font></div>
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Ranc</font></font></div>
+                                            <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@(item?.Account?.Person?.Name) @(item?.Account?.Person?.Family)</font></font></div>
+                                            <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@(item?.Account1?.Person?.Name) @(item?.Account1?.Person?.Family)</font></font></div>
+                                            <div class="card-standing-button"><a class="card-standing-toogle material-icons-remove collapsed" role="button" data-bs-toggle="collapse" data-parent="#accordion1" href="#accordion1Collapse1" aria-controls="accordion1Collapse1"></a></div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse" id="accordion1Collapse1" role="tabpanel" aria-labelledby="accordion1Heading1">
+                                        <div class="card-body">
+                                            <div class="card-standing-team-details">
+                                                <div class="card-standing-game-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">صفحه اصلی</font></font></div>
+                                                <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">78</font></font></div>
+                                                <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></div>
+                                                <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></div>
+                                            </div>
+                                            <div class="card-standing-divider"></div>
+                                            <div class="card-standing-team-details">
+                                                <div class="card-standing-game-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">دور</font></font></div>
+                                                <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26</font></font></div>
+                                                <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">28</font></font></div>
+                                                <div class="card-standing-number"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-5 col-xl-4">-->
+                <!-- Heading Component-->
+                <!--<article class="heading-component">
+                    <div class="heading-component-inner">
+                        <h5 class="heading-component-title">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                    آخرین نتایج بازی ها
+                                </font>
+                            </font>
+                        </h5>
+                    </div>
+                </article>-->
+                <!-- Game Result Classic-->
+                <!--<article class="game-result game-result-classic">
+                    <div class="game-result-main">
+                        <div class="game-result-team game-result-team-first">
+                            <figure class="game-result-team-figure game-result-team-figure-big">
+                                <img src="images/team-sportland-41x55.png" alt="" width="41" height="55">
+                            </figure>
+                            <div class="game-result-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ورزش لند</font></font></div>
+                            <div class="game-result-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ایالات متحده آمریکا</font></font></div>
+                        </div>
+                        <div class="game-result-middle">
+                            <div class="game-result-score-wrap">
+                                <div class="game-result-score game-result-team-win">
+                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font><span class="game-result-team-label game-result-team-label-top"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">پیروزی</font></font></span>
+                                </div>
+                                <div class="game-result-score-divider">
+                                    <svg x="0px" y="0px" width="7px" height="21px" viewBox="0 0 7 21" enable-background="new 0 0 7 21" xml:space="preserve">
+                                    <g>
+                                    <circle cx="3.5" cy="3.5" r="3"></circle>
+                                    <path d="M3.5,1C4.879,1,6,2.122,6,3.5S4.879,6,3.5,6S1,4.878,1,3.5S2.122,1,3.5,1 M3.5,0C1.567,0,0,1.567,0,3.5S1.567,7,3.5,7      S7,5.433,7,3.5S5.433,0,3.5,0L3.5,0z"></path>
+                          </g>
+                                    <g>
+                                    <circle cx="3.695" cy="17.5" r="3"></circle>
+                                    <path d="M3.695,15c1.378,0,2.5,1.122,2.5,2.5S5.073,20,3.695,20s-2.5-1.122-2.5-2.5S2.316,15,3.695,15 M3.695,14      c-1.933,0-3.5,1.567-3.5,3.5s1.567,3.5,3.5,3.5s3.5-1.567,3.5-3.5S5.628,14,3.695,14L3.695,14z"></path>
+                          </g>
+                        </svg>
+                                </div>
+                                <div class="game-result-score">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                            1
+                                        </font>
+                                    </font>
+                                </div>
+                            </div>
+                            <div class="game-results-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">صفحه اصلی</font></font></div>
+                        </div>
+                        <div class="game-result-team game-result-team-second">
+                            <figure class="game-result-team-figure game-result-team-figure-big">
+                                <img src="images/team-dream-team-50x50.png" alt="" width="50" height="50">
+                            </figure>
+                            <div class="game-result-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">تیم رویایی</font></font></div>
+                            <div class="game-result-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">اسپانیا</font></font></div>
+                        </div>
+                    </div>
+                    <div class="game-result-footer">
+                        <ul class="game-result-details">
+                            <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">استادیوم نیویورک ها</font></font></li>
+                            <li>
+                                <time datetime="2022-04-14"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14 آوریل 2022</font></font></time>
+                            </li>
+                        </ul>
+                    </div>
+                </article>-->
+                <!-- Game Result Classic-->
+                <!--<article class="game-result game-result-classic">
+                    <div class="game-result-main">
+                        <div class="game-result-team game-result-team-first">
+                            <figure class="game-result-team-figure game-result-team-figure-big">
+                                <img src="images/team-bavaria-fc-38x50.png" alt="" width="38" height="50">
+                            </figure>
+                            <div class="game-result-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">باواریا اف سی</font></font></div>
+                            <div class="game-result-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">آلمان</font></font></div>
+                        </div>
+                        <div class="game-result-middle">
+                            <div class="game-result-score-wrap">
+                                <div class="game-result-score">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                            2
+                                        </font>
+                                    </font>
+                                </div>
+                                <div class="game-result-score-divider">
+                                    <svg x="0px" y="0px" width="7px" height="21px" viewBox="0 0 7 21" enable-background="new 0 0 7 21" xml:space="preserve">
+                                    <g>
+                                    <circle cx="3.5" cy="3.5" r="3"></circle>
+                                    <path d="M3.5,1C4.879,1,6,2.122,6,3.5S4.879,6,3.5,6S1,4.878,1,3.5S2.122,1,3.5,1 M3.5,0C1.567,0,0,1.567,0,3.5S1.567,7,3.5,7      S7,5.433,7,3.5S5.433,0,3.5,0L3.5,0z"></path>
+                          </g>
+                                    <g>
+                                    <circle cx="3.695" cy="17.5" r="3"></circle>
+                                    <path d="M3.695,15c1.378,0,2.5,1.122,2.5,2.5S5.073,20,3.695,20s-2.5-1.122-2.5-2.5S2.316,15,3.695,15 M3.695,14      c-1.933,0-3.5,1.567-3.5,3.5s1.567,3.5,3.5,3.5s3.5-1.567,3.5-3.5S5.628,14,3.695,14L3.695,14z"></path>
+                          </g>
+                        </svg>
+                                </div>
+                                <div class="game-result-score game-result-team-win">
+                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font><span class="game-result-team-label game-result-team-label-top"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">پیروزی</font></font></span>
+                                </div>
+                            </div>
+                            <div class="game-results-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">دور</font></font></div>
+                        </div>
+                        <div class="game-result-team game-result-team-second">
+                            <figure class="game-result-team-figure game-result-team-figure-big">
+                                <img src="images/team-real-madrid-38x50.png" alt="" width="38" height="50">
+                            </figure>
+                            <div class="game-result-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">رئال مادرید</font></font></div>
+                            <div class="game-result-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">اسپانیا</font></font></div>
+                        </div>
+                    </div>
+                    <div class="game-result-footer">
+                        <ul class="game-result-details">
+                            <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">استادیوم باواریا</font></font></li>
+                            <li>
+                                <time datetime="2022-04-14"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14 آوریل 2022</font></font></time>
+                            </li>
+                        </ul>
+                    </div>
+                </article>-->
+                <!-- Game Result Classic-->
+                <!--<article class="game-result game-result-classic">
+                    <div class="game-result-main">
+                        <div class="game-result-team game-result-team-first">
+                            <figure class="game-result-team-figure game-result-team-figure-big">
+                                <img src="images/team-sportland-41x55.png" alt="" width="41" height="55">
+                            </figure>
+                            <div class="game-result-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ورزش لند</font></font></div>
+                            <div class="game-result-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ایالات متحده آمریکا</font></font></div>
+                        </div>
+                        <div class="game-result-middle">
+                            <div class="game-result-score-wrap">
+                                <div class="game-result-score game-result-team-win">
+                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font><span class="game-result-team-label game-result-team-label-top"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">پیروزی</font></font></span>
+                                </div>
+                                <div class="game-result-score-divider">
+                                    <svg x="0px" y="0px" width="7px" height="21px" viewBox="0 0 7 21" enable-background="new 0 0 7 21" xml:space="preserve">
+                                    <g>
+                                    <circle cx="3.5" cy="3.5" r="3"></circle>
+                                    <path d="M3.5,1C4.879,1,6,2.122,6,3.5S4.879,6,3.5,6S1,4.878,1,3.5S2.122,1,3.5,1 M3.5,0C1.567,0,0,1.567,0,3.5S1.567,7,3.5,7      S7,5.433,7,3.5S5.433,0,3.5,0L3.5,0z"></path>
+                          </g>
+                                    <g>
+                                    <circle cx="3.695" cy="17.5" r="3"></circle>
+                                    <path d="M3.695,15c1.378,0,2.5,1.122,2.5,2.5S5.073,20,3.695,20s-2.5-1.122-2.5-2.5S2.316,15,3.695,15 M3.695,14      c-1.933,0-3.5,1.567-3.5,3.5s1.567,3.5,3.5,3.5s3.5-1.567,3.5-3.5S5.628,14,3.695,14L3.695,14z"></path>
+                          </g>
+                        </svg>
+                                </div>
+                                <div class="game-result-score">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                            1
+                                        </font>
+                                    </font>
+                                </div>
+                            </div>
+                            <div class="game-results-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">صفحه اصلی</font></font></div>
+                        </div>
+                        <div class="game-result-team game-result-team-second">
+                            <figure class="game-result-team-figure game-result-team-figure-big">
+                                <img src="images/team-celta-vigo-45x50.png" alt="" width="45" height="50">
+                            </figure>
+                            <div class="game-result-team-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">سلتیک ویگو</font></font></div>
+                            <div class="game-result-team-country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ایتالیا</font></font></div>
+                        </div>
+                    </div>
+                    <div class="game-result-footer">
+                        <ul class="game-result-details">
+                            <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">استادیوم نیویورک ها</font></font></li>
+                            <li>
+                                <time datetime="2022-04-14"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14 آوریل 2022</font></font></time>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>-->
+        </div>
+    </div>
+</section>

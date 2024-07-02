@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Arad.Models.Sance>
+
+@{
+    ViewBag.Title = "سانس‌ها";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("درج جدید", "Create", new { }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            تاریخ سانس
+        </th>
+        <th>
+            ساعت شروع سانس
+        </th>
+        <th>
+            ساعت پایان سانس
+        </th>
+        <th>
+            مبلغ سانس
+        </th>
+        <th>
+            درصد تخفیف
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Arad.Classes.DateTimeConvertor.ToShamsi(item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @(item.Discount > 0 ? "%" : "")@Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+            @Html.ActionLink("جزئیات", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" }) |
+            @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

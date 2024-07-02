@@ -1,0 +1,133 @@
+﻿@model Arad.Models.Team
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTeam_Account = ViewBag.Team_Account as List<Arad.Models.Team_Account>;
+}
+<section dir="rtl" class="section section-md bg-gray-100">
+    <div class="container">
+        <div class="col-md-12 col-lg-12">
+            <!-- Heading Component-->
+            <article class="heading-component">
+                <div class="heading-component-inner">
+                    <h5 class="">
+                        جزئیات مجموعه ورزشی
+                    </h5>
+                </div>
+            </article>
+            <!-- Player Info Corporate-->
+            <div class="player-info-corporate">
+                <div class="player-info-figure">
+                    <div class="player-img">
+                        <img src="~/Content/NewContent/images/@Model.Image" alt="" width="368" height="286">
+                    </div>
+                    <div class="team-logo-img">
+                        <img src="~/Content/NewContent/images/@Model.Image" alt="" width="237" height="312">
+                    </div>
+                </div>
+                <div dir="rtl" style="text-align:right;" class="player-info-main">
+                    <h4 class="player-info-title">@Model.Name</h4>
+                    <div class="player-info-table">
+                        <div class="table-custom-wrap">
+                            <table class="table-custom">
+                                <tbody>
+                                    <tr>
+                                        <th>مالک:</th>
+                                        <th style="text-align:right;">@(Model?.Account?.Person?.Name) @(Model?.Account?.Person?.Family)</th>
+                                        <th>سرمربی:</th>
+                                        <th style="text-align:right;">@(Model?.Account1?.Person?.Name) @(Model?.Account1?.Person?.Family)</th>
+                                        <th>رنکینگ:</th>
+                                        <th style="text-align:right;">@(Model?.Ranc)</th>
+                                    </tr>
+                                    <tr>
+                                        <th>استان:</th>
+                                        <th style="text-align:right;"> @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Proviance)Model?.Proviance))</th>
+                                        <th>شهرستان:</th>
+                                        <th style="text-align:right;">@(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)Model?.City))</th>
+                                        <th>تاسیس:</th>
+                                        <th style="text-align:right;">@(Arad.Classes.DateTimeConvertor.ToShamsi(Model?.CreatedDate))</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="player-info-progress">
+                        <!-- Linear progress bar-->
+                        <article class="progress-linear progress-bar-modern animated">
+                            <div class="progress-header">
+                                <p>درصد برد:</p>
+                            </div>
+                            <div class="progress-bar-linear-wrap">
+                                <div class="progress-bar-linear" style="transition-duration: 1s; width: 95%;"></div>
+                            </div><span class="progress-value">95</span>
+                        </article>
+                        <article class="progress-linear progress-bar-modern animated">
+                            <div class="progress-header">
+                                <p>درصد باخت:</p>
+                            </div>
+                            <div class="progress-bar-linear-wrap">
+                                <div class="progress-bar-linear" style="transition-duration: 1s; width: 20%;"></div>
+                            </div><span class="progress-value">20</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!--  Block Player Info-->
+            <div style="text-align:right;" class="block-player-info">
+                <h4>بیوگرافی</h4>
+                <!-- Quote Modern-->
+                <div class="block-player-info-content">
+                    <p>باشگاه فرهنگی ورزشی فعالیت خود را در حوزه فوتبال و فوتسال شروع کرده است  </p>
+                    <p>
+                        و با مدیریت درست تا به حال توانسته در رده های نونهالان و نوجوانان قهرمانی هایی را کسب کند.
+                    </p>
+                </div>
+                <div class="block-player-info-timeline">
+                    <div class="player-info-timeline-item">
+                        <div class="player-info-timeline-item-header">
+                            <span class="timeline-counter">1399</span>
+                            <h5>قهرمان لیگ استان</h5>
+                        </div>
+                    </div>
+                    <div class="player-info-timeline-item">
+                        <div class="player-info-timeline-item-header">
+                            <span class="timeline-counter">1400</span>
+                            <h5>قهرمان لیگ برتر</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<section dir="rtl" class="section section-sm bg-gray-100">
+    <div class="container">
+        <!-- Heading Component-->
+        <article class="heading-component">
+            <div class="heading-component-inner">
+                <h5 >
+                    بازیکنان
+                </h5>
+            </div>
+        </article>
+        <div class="row row-30">
+                @foreach (var item in listTeam_Account)
+                {
+            <div class="col-sm-6 col-lg-4">
+                    <div class="player-info-modern">
+                        <a class="player-info-modern-figure" href="@Url.Action("DetailAccount", "Team_Account", new { area = "TeamOwner",id=item.AccountId }, null)"><img src="~/Content/NewContent/images/roster-player-1-368x286.png" width="368" height="286"></a>
+                        <div class="player-info-modern-footer">
+                            <div class="player-info-modern-content">
+                                <div class="player-info-modern-title">
+                                    <h5><a href="@Url.Action("DetailAccount", "Team_Account", new { area = "TeamOwner",id=item.AccountId }, null)">@(item?.Account?.Person?.Name) @(item?.Account?.Person?.Family)</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Arad.Models.Salon>
+
+@{
+    ViewBag.Title = "مجموعه‌ها";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("درج جدید", "Create", new { }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            نام مجموعه
+        </th>
+        <th>
+            نشانی
+        </th>
+        <th>
+            استان
+        </th>
+        <th>
+            شهرستان
+        </th>
+        <th>
+            مالک مجموعه
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Proviance)item.Province))
+        </td>
+        <td>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)item.City))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.Person.Name)
+        </td>
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+            @Html.ActionLink("جزئیات", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" }) |
+            @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

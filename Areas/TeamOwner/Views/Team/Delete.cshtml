@@ -1,0 +1,80 @@
+﻿@model Arad.Models.Team
+
+@{
+    ViewBag.Title = "جزئیات تیم";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حدف این مندج اطمینان دارید؟</h3>
+<div>
+    <h4>تیم</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            نام تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            تاریخ تاسیس
+        </dt>
+
+        <dd>
+            @Arad.Classes.DateTimeConvertor.ToShamsi(Model.CreatedDate)
+        </dd>
+
+        <dt>
+            رتبه
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ranc)
+        </dd>
+
+        <dt>
+            استان
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Proviance)Model.Proviance))
+        </dd>
+
+        <dt>
+            شهرستان
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)Model.City))
+        </dd>
+
+        <dt>
+            مالک تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.Name)
+        </dd>
+
+        <dt>
+            مربی تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account1.Person.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

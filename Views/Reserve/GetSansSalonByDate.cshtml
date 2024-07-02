@@ -1,0 +1,66 @@
+﻿@model  List<Arad.Models.Salon_Sance>
+@{
+    Layout = null;
+    var sansList = Model.Select(q => q.Sance).ToList();
+}
+@if (Model.Any())
+{
+
+    foreach (var sans in sansList)
+    {
+        <div class="col-md-12 SansCard">
+            <div class="row m-0 p-0">
+                <div class="col-md-1">
+                    @if (sans.Discount > 0)
+                    {
+                        <span class="badge DiscountIcon">%@sans.Discount</span>
+                    }
+                </div>
+                <div class="col-md-3">
+                    @if (sans.Discount > 0)
+                    {
+                        <p><i class="fa fa-money"></i> هزینه: <s>@sans.Price</s> @(sans.Price - ((sans.Price * sans.Discount)/100)) </p>
+                    }
+                    else
+                    {
+                        <p><i class="fa fa-money"></i> هزینه: @sans.Price </p>
+                    }
+                    <p><i class="fa fa-home"></i>@sans.Salon_Sance.FirstOrDefault(q => q.SanceId == sans.Id).Salon.Title</p>
+                </div>
+                <div class="col-md-6">
+
+                    <p><i class="fa fa-map-marker"></i>@sans.Salon_Sance.FirstOrDefault(q => q.SanceId == sans.Id).Salon.Address</p>
+                    <p><i class="fa fa-clock-o"></i> ساعت شروع @sans.StartTime  _________  ساعت پایان @sans.EndTime</p>
+
+                </div>
+                <div class="col-md-2 text-left">
+                    @if (sans.Salon_Sance.FirstOrDefault(q => q.SanceId == sans.Id).Status == true)
+                    {
+                        <button class="reserveBtn reserveBtnST" value="@sans.Salon_Sance.FirstOrDefault(q => q.SanceId == sans.Id).Id">رزرو</button>
+                    }
+                    else
+                    {
+                        <p style="color: orangered; margin: 15px 0 0 23px;">رزرو شده</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-warning block-center" style="margin-top:150px">در این تاریخ سانس آزار وجود ندارد!</div>
+}
+<script>
+       $(".reserveBtn").on("click", function (e) {
+        e.stopImmediatePropagation();
+        $.ajax({
+            url: '@Url.Action("Reserve", "Reserve")',
+            data: { sanceSalonId: $(this).val() },
+            type: "POST",
+            success: function (res) {
+                alert(res)
+            }
+        });
+    })
+</script>

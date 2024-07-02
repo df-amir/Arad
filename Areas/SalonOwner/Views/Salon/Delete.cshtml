@@ -1,0 +1,64 @@
+﻿@model Arad.Models.Salon
+
+@{
+    ViewBag.Title = "حذف مجموعه ورزشی";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حدف این مندج اطمینان دارید؟</h3>
+<div>
+    <h4>مجموعه ورزشی</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            نام مجموعه
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            نشانی
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            استان
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Proviance)Model.Province))
+        </dd>
+
+        <dt>
+            شهرستان
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)Model.City))
+        </dd>
+
+        <dt>
+            مالک مجموعه
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

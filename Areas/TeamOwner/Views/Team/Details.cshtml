@@ -1,0 +1,74 @@
+﻿@model Arad.Models.Team
+
+@{
+    ViewBag.Title = "حذف تیم";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>تیم</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            نام تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            تاریخ تاسیس
+        </dt>
+
+        <dd>
+            @Arad.Classes.DateTimeConvertor.ToShamsi(Model.CreatedDate)
+        </dd>
+
+        <dt>
+            رتبه
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ranc)
+        </dd>
+
+        <dt>
+            استان
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Proviance)Model.Proviance))
+        </dd>
+
+        <dt>
+            شهرستان
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)Model.City))
+        </dd>
+
+        <dt>
+            مالک تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.Name)
+        </dd>
+
+        <dt>
+            مربی تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account1.Person.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+</p>

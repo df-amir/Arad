@@ -1,0 +1,42 @@
+﻿@model Arad.Models.Team_Account
+
+@{
+    ViewBag.Title = "جزئیات عضویت";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>عضویت</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            وضعیت عضویت
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Team_Account_Status)Model.Status))
+        </dd>
+
+        <dt>
+            نام ورزشکار
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.Name)
+        </dd>
+
+        <dt>
+            نام تیم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+</p>

@@ -1,0 +1,42 @@
+﻿@model Arad.Models.Salon_Sance
+
+@{
+    ViewBag.Title = "جزئیات سانس سالن";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>مدیریت سانس</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            وضعیت رزرو
+        </dt>
+
+        <dd>
+            @(Model.Status == true ? "آزاد" : "رزرو شده")
+        </dd>
+
+        <dt>
+            مجموعه ورزشی
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salon.Title)
+        </dd>
+
+        <dt>
+            شروع سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sance.StartTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+</p>

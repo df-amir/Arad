@@ -1,0 +1,64 @@
+﻿@model Arad.Models.Sance
+
+@{
+    ViewBag.Title = "حذف سانس";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حدف این مندج اطمینان دارید؟</h3>
+<div>
+    <h4>سانس</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            تاریخ سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            ساعت شروع سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            ساعت پایان سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            مبلغ سانس
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            درصد تخفیف
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

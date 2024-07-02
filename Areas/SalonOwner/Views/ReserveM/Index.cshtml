@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Arad.Models.Reserve>
+
+@{
+    ViewBag.Title = "مجموعه‌ها";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>قیمت نهایی</th>
+        <th>وضعیت</th>
+        <th>کد رزرو</th>
+        <th>سالن</th>
+        <th>سانس</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.FinalPrice</td>
+        <td>@(item.IsDeleted == true ? "منقضی شده" : "فعال")</td>
+        <td>@item.Token</td>
+        <td>@item.Salon_Sance.Salon.Title</td>
+        <td>@Arad.Classes.DateTimeConvertor.ToShamsi(item.Salon_Sance.Sance.Date) - @item.Salon_Sance.Sance.StartTime</td>
+        <td>
+            @Html.ActionLink("جزئیات", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

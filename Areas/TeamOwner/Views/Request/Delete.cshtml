@@ -1,0 +1,72 @@
+﻿@model Arad.Models.Request
+
+@{
+    ViewBag.Title = "حذف درخواست";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حدف این مندج اطمینان دارید؟</h3>
+<div>
+    <h4>درخواست</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            وضعیت درخواست
+        </dt>
+
+        <dd>
+            @(Model.Status == true ? "پذیرفته شده" : "در انتضار پذیرش")
+        </dd>
+
+        <dt>
+            نوع بازی
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Request_Type)Model.Type))
+        </dd>
+
+        <dt>
+            درخواست دهنده
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.Name)
+        </dd>
+
+        <dt>
+            داور بازی
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account1.Person.Name)
+        </dd>
+
+        <dt>
+            تیم میزبان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.Name)
+        </dd>
+
+        <dt>
+            تیم میهمان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team1.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

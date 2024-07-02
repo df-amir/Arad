@@ -1,0 +1,234 @@
+﻿@{
+    var lastPlay = ViewBag.listLastPlay as List<Arad.Models.Play> ??null;
+    var lastTeam = ViewBag.listTeam as List<Arad.Models.Team> ??null;
+    var lastSalon = ViewBag.listSalon as List<Arad.Models.Salon> ??null;
+    var row = 1;
+}
+<div class="preloader">
+    <div class="preloader-body">
+        <div class="preloader-item"></div>
+    </div>
+</div>
+<!-- Page-->
+<div class="page" dir="rtl">
+    <!-- Swiper-->
+    <img src="~/Content/NewContent/images/enghelab.jpg" style="width:100%"/>
+    @*<section class="section swiper-container swiper-slider swiper-classic bg-gray-2" data-loop="true" data-autoplay="4000" data-simulate-touch="false" data-slide-effect="fade">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide text-center" style="background-image:{}" data-slide-bg="../../Content/NewContent/images/enghelab.jpg">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6">
+                            <div class="swiper-slide-caption">
+                                <h1 data-caption-animate="fadeInUp" data-caption-delay="100">We play Soccer</h1>
+                                <h4 data-caption-animate="fadeInUp" data-caption-delay="200">like no one else in the united states</h4><a class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300" href="about-us.html">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" data-slide-bg="~/Content/NewContent/images/slider-1-slide-2-1920x671.jpg">
+                <div class="container">
+                    <div class="row justify-content-end">
+                        <div class="col-xl-5">
+                            <div class="swiper-slide-caption">
+                                <h1 data-caption-animate="fadeInUp" data-caption-delay="100">We Are Pros</h1>
+                                <h4 data-caption-animate="fadeInUp" data-caption-delay="200">in Everything Concerning Soccer</h4><a class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300" href="about-us.html">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" data-slide-bg="~/Content/NewContent/images/slider-1-slide-3-1920x671.jpg" style="background-image: url('~/Content/NewContent/images/slider-1-slide-3-1920x671.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5">
+                            <div class="swiper-slide-caption">
+                                <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Best Website</h1>
+                                <h4 data-caption-animate="fadeInUp" data-caption-delay="200">for soccer news, updates, <br class="d-none d-xl-block"> and game results</h4><a class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300" href="about-us.html">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button swiper-button-prev"></div>
+        <div class="swiper-button swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </section>*@
+    <!-- Latest News-->
+    <section class="section section-md bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-lg-8">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5>
+                                جدول تیم‌ها
+                            </h5>
+                        </div>
+                    </article>
+                    <div class="card-standing card-group-custom card-standing-index" id="accordion1" role="tablist" aria-multiselectable="false">
+                        <div class="card-standing-caption">
+                            <div class="card-standing-caption-aside">
+                                <div class="card-standing-number"></div>
+                                <div class="card-standing-team">تیم</div>
+                                <div class="card-standing-number">امتیاز</div>
+                                <div class="card-standing-number">مالک</div>
+                                <div class="card-standing-number">سرمربی</div>
+                                <div class="card-standing-number">عملیات</div>
+                            </div>
+                        </div>
+                        <!-- Bootstrap card-->
+                        @foreach (var item in lastTeam)
+                        {
+                            <article class="card card-custom" dir="rtl">
+                                <div class="card-standing-position card-standing-counter"></div>
+                                <div class="card-header" style="width:100%;">
+                                    <div class="card-standing-team-item" style="margin-right:40px;">
+                                        <div class="card-standing-team">
+                                            <div class="card-standing-team-figure">
+                                                <img src="~/Content/NewContent/images/@item.Image" width="31" height="41">
+                                            </div>
+                                            <div class="card-standing-team-title">
+                                                <div class="card-standing-team-name">@item.Name</div>
+                                                <div class="card-standing-team-country">@(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)item?.City))</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-standing-number">@item.Ranc</div>
+                                        <div class="card-standing-number">@(item?.Account?.Person?.Name) @(item?.Account?.Person?.Family)</div>
+                                        <div class="card-standing-number">@(item?.Account1?.Person?.Name) @(item?.Account1?.Person?.Family)</div>
+                                        <div class="card-standing-number"><a href="@Url.Action("Showdetails", "Team", new { area = "TeamOwner",id=item.Id }, null)" aria-controls="accordion1Collapse1"><i class="fa fa-info"></i></a></div>
+                                    </div>
+                                </div>
+
+                            </article>
+                        }
+                    </div>
+
+                    <br />
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5>
+                                سالن ‌ها
+                            </h5>
+                        </div>
+                    </article>
+                    <div class="table-custom-responsive card-standing card-group-custom card-standing-index " dir="rtl">
+                        <table class="table-custom table-standings table-creative table-custom-striped">
+                            <thead>
+                                <tr style="text-align:center;">
+                                    <th>ردیف</th>
+                                    <th>سالن</th>
+                                    <th>مالک</th>
+                                    <th>شماره تماس</th>
+                                    <th>آدرس</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in lastSalon)
+                                {
+                                    <tr>
+                                        <td>@(row++)</td>
+                                        <td>
+                                            @(item?.Title)
+                                        </td>
+                                        <td>
+                                            @(item?.Account?.Person?.Name) @(item?.Account?.Person?.Family)
+                                        </td>
+                                        <td>
+                                            @(item?.Account?.PhoneNumber)
+                                        </td>
+                                        <td>
+                                            @(item?.Address)
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm " href="@Url.Action("Showdetails", "Salon", new { area = "SalonOwner",id=item.Id }, null)"><i class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5>
+                                نتایج آخرین بازی‌ها
+                            </h5>
+                        </div>
+                    </article>
+                    @foreach (var item in lastPlay)
+                    {
+                        <article class="game-result game-result-classic">
+                            <div class="game-result-main">
+                                <div class="game-result-team game-result-team-first">
+                                    <figure class="game-result-team-figure game-result-team-figure-big">
+                                        <img src="~/Content/NewContent/images/@(item?.Request?.Team?.Image)" alt="" width="41" height="55">
+                                    </figure>
+                                    <div class="game-result-team-name">@(item?.Request?.Team?.Name)</div>
+                                    <div class="game-result-team-country">@(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)item?.Request?.Team?.City))</div>
+                                </div>
+                                <div class="game-result-middle">
+                                    <div class="game-result-score-wrap">
+                                        <div class="game-result-score game-result-team-win">
+                                            @if (item?.HostTeamScore > item?.GuestTeamScore)
+                                            {
+                                                <span class="game-result-team-label game-result-team-label-top">پیروز</span>
+                                            }
+                                            @(item?.HostTeamScore)
+                                        </div>
+                                        <div class="game-result-score-divider">
+                                            <svg x="0px" y="0px" width="7px" height="21px" viewBox="0 0 7 21" enable-background="new 0 0 7 21" xml:space="preserve">
+                                            <g>
+                                            <circle cx="3.5" cy="3.5" r="3"></circle>
+                                            <path d="M3.5,1C4.879,1,6,2.122,6,3.5S4.879,6,3.5,6S1,4.878,1,3.5S2.122,1,3.5,1 M3.5,0C1.567,0,0,1.567,0,3.5S1.567,7,3.5,7      S7,5.433,7,3.5S5.433,0,3.5,0L3.5,0z"></path>
+                          </g>
+                                            <g>
+                                            <circle cx="3.695" cy="17.5" r="3"></circle>
+                                            <path d="M3.695,15c1.378,0,2.5,1.122,2.5,2.5S5.073,20,3.695,20s-2.5-1.122-2.5-2.5S2.316,15,3.695,15 M3.695,14      c-1.933,0-3.5,1.567-3.5,3.5s1.567,3.5,3.5,3.5s3.5-1.567,3.5-3.5S5.628,14,3.695,14L3.695,14z"></path>
+                          </g>
+                        </svg>
+                                        </div>
+                                        <div class="game-result-score game-result-team-win">
+                                            @if (item?.GuestTeamScore > item?.HostTeamScore)
+                                            {
+                                                <span class="game-result-team-label game-result-team-label-top">پیروز</span>
+                                            }
+                                            @(item?.GuestTeamScore)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-result-team game-result-team-second">
+                                    <figure class="game-result-team-figure game-result-team-figure-big">
+                                        <img src="~/Content/NewContent/images/@(item?.Request?.Team1?.Image)" alt="" width="50" height="50">
+                                    </figure>
+                                    <div class="game-result-team-name">@(item?.Request?.Team1?.Name)</div>
+                                    <div class="game-result-team-country">@(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.City)item?.Request?.Team1?.City))</div>
+                                </div>
+                            </div>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("Showdetails", "Play", new { area = "Referee",id=item.Id }, null)">مشاهده</a>
+                            <div class="game-result-footer">
+                                <ul class="game-result-details">
+                                    <li>@(item?.Request?.Salon_Sance?.Salon?.Title)</li>
+                                    <br />
+                                    <li>
+                                        <span>
+                                            @(string.Format("{0:hh\\:mm}", item?.Request.Salon_Sance?.Sance?.StartTime))-@(string.Format("{0:hh\\:mm}", item?.Request.Salon_Sance?.Sance?.EndTime))
+                                        </span>
+                                        <time>@(Arad.Classes.DateTimeConvertor.ToShamsi(item?.Request?.Salon_Sance?.Sance?.Date)) </time>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

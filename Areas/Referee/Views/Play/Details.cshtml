@@ -1,0 +1,42 @@
+﻿@model Arad.Models.Play
+
+@{
+    ViewBag.Title = "جزئیات بازی";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>بازی</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            امتیاز تیم میزبان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HostTeamScore)
+        </dd>
+
+        <dt>
+            امتیاز تیم میهمان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuestTeamScore)
+        </dd>
+
+        <dt>
+            دخواست کننده
+        </dt>
+
+        <dd>
+            @(Model.Request.Account.Person.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+</p>

@@ -1,0 +1,66 @@
+﻿@model Arad.Models.Request
+
+@{
+    ViewBag.Title = "جزئیات درخواست";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>درخواست</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            وضعیت درخواست
+        </dt>
+
+        <dd>
+            @(Model.Status == true ? "پذیرفته شده" : "در انتضار پذیرش")
+        </dd>
+
+        <dt>
+            نوع بازی
+        </dt>
+
+        <dd>
+            @(Arad.Classes.PublicFunction.EnumPersianName((Arad.Classes.Enums.Request_Type)Model.Type))
+        </dd>
+
+        <dt>
+            درخواست دهنده
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.Name)
+        </dd>
+
+        <dt>
+            داور بازی
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account1.Person.Name)
+        </dd>
+
+        <dt>
+            تیم میزبان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.Name)
+        </dd>
+
+        <dt>
+            تیم میهمان
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team1.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("بازگشت", "Index", new { }, new { @class = "btn btn-default" })
+</p>

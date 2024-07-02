@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Arad.Models.Salon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var row =1;
+}
+<section dir="rtl" class="section parallax-container breadcrumbs-wrap" data-parallax-img="images/bg-breadcrumbs-1-1920x726.jpg">
+    <div class="material-parallax parallax"><img src="images/bg-breadcrumbs-1-1920x726.jpg" alt="" style="display: block; transform: translate3d(-50%, 115px, 0px);"></div>
+    <div class="parallax-content breadcrumbs-custom context-dark">
+        <div class="container">
+            <h3 class="breadcrumbs-custom-title">مجموعه‌های ورزشی</h3>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="index.html">خانه</a></li>
+                >
+                <li><a href="#">سالن</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="table-custom-responsive section col-md-8" dir="rtl">
+    <table class="table-custom table-standings table-creative table-custom-striped">
+        <thead>
+            <tr style="text-align:center;">
+                <th>ردیف</th>
+                <th>سالن</th>
+                <th>مالک</th>
+                <th>شماره تماس</th>
+                <th>آدرس</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td >@(row++)</td>
+                <td>
+                    @(item?.Title)
+                </td>
+                <td>
+                    @(item?.Account?.Person?.Name) @(item?.Account?.Person?.Family)
+                </td>
+                <td>
+                    @(item?.Account?.PhoneNumber)
+                </td>
+                <td>
+                    @(item?.Address)
+                </td>
+                <td>
+                    <a class="btn btn-sm " href="@Url.Action("Details", "Salon", new { area = "SalonOwner",id=item.Id }, null)" ><i class="fa fa-eye"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,167 @@
+﻿@model  List<Arad.Models.Reserve>
+@{ 
+    List<object> objList = ViewBag.WeekDays;
+}
+
+<style>
+    .DateSonsCard {
+        padding: 20px;
+        background-color: #f4fbff;
+        border: none;
+        text-align: center;
+        width: 100%;
+        transition: 0.3s;
+    }
+
+        .DateSonsCard:hover {
+            background-color: #4ec490;
+        }
+
+        .DateSonsCard:focus {
+            background-color: #4ec490;
+        }
+
+    .SansCard {
+        padding: 5px;
+        border: solid 1px #bec5cb;
+        border-radius: 10px;
+        box-shadow: 0px 0px 7px 1px #d6d6d6;
+        text-align: right;
+        margin-top: 10px;
+        color: black;
+    }
+
+    .DiscountIcon {
+        background-color: orangered;
+        font-size: 15px;
+        height: 40px;
+        width: 40px;
+        margin-top: 9px;
+        padding-top: 12px;
+    }
+
+    .reservesBox {
+        background-color: #35363c;
+        min-height: 400px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        border-radius: 10px 0 0 10px;
+        text-align: right;
+        padding: 10px;
+        color: white
+    }
+
+    .reserveBtnST {
+        padding: 0px 40px 5px 40px;
+        background-color: #4ec490;
+        border: solid 1px #198a58;
+        border-radius: 5px;
+        margin-top: 15px;
+        color: white;
+        transition: 0.3s
+    }
+
+        .reserveBtnST:hover {
+            background-color: #399f72;
+        }
+</style>
+
+<div dir="rtl">
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="reservesBox">
+                <h5 style="color:white">
+                    آخرین رزرو‌ها
+                </h5>
+                @if (Model.Any())
+                {
+                    <table class="table" style="font-size: 10px; color: #fff; margin-top:5px;">
+                        <thead>
+                            <tr>
+                                <th>قیمت نهایی</th>
+                                <th>وضعیت</th>
+                                <th>کد رزرو</th>
+                                <th>سالن</th>
+                                <th>سانس</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var reserv in Model)
+                            {
+                                <tr>
+                                    <td>@reserv.FinalPrice</td>
+                                    <td>@(reserv.IsDeleted == true ? "منقضی شده" : "فعال")</td>
+                                    <td>@reserv.Token</td>
+                                    <td>@reserv.Salon_Sance.Salon.Title</td>
+                                    <td>@Arad.Classes.DateTimeConvertor.ToShamsi(reserv.Salon_Sance.Sance.Date) - @reserv.Salon_Sance.Sance.StartTime</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+        <div class="col-md-9 text-center">
+            <div class="col-md-12 row">
+
+                @foreach (var obj in objList)
+                {
+                    <div class="col-md-2 p-0">
+                        <button class="DateSonsCard DateSonsCardJS" value="@obj.GetType().GetProperty("value").GetValue(obj, null)">
+                            @obj.GetType().GetProperty("date").GetValue(obj, null) 
+                            <br />
+                            @obj.GetType().GetProperty("dayName").GetValue(obj, null)
+                        </button>
+                    </div>
+                }
+
+            </div>
+            <div class="spinner-border mt-20" id="sansBoxLoader" role="status" style="display: none; margin-top: 150px;">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="col-md-12 row mt-0" id="sansBox" style="margin-bottom:10px;">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="~/Content/js/jquery-3.3.1.min.js"></script>
+<script>
+
+    $(".DateSonsCardJS").on("click", function (e) {
+        e.stopImmediatePropagation();
+        $("#sansBox").html('');
+        $("#sansBoxLoader").show();
+
+        $.ajax({
+            url: '@Url.Action("GetSansSalonByDate", "Reserve")',
+            data: { date: $(this).val() },
+            type: "POST",
+            success: function (html) {
+                $("#sansBoxLoader").hide();
+                $("#sansBox").html(html);
+
+            }
+        });
+
+    })
+
+    $(".reserveBtn").on("click", function (e) {
+        e.stopImmediatePropagation();
+        alert(0)
+        $.ajax({
+            url: '@Url.Action("Reserve", "Reserve")',
+            data: { sanceSalonId: $(this).val() },
+            type: "POST",
+            success: function (res) {
+                alert(res)
+            }
+        });
+    })
+
+</script>

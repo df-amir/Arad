@@ -1,0 +1,128 @@
+﻿@model Arad.Models.Play
+@using Arad.Classes
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    
+    <!-- Game Result Bug-->
+    <article class="game-result">
+        <div class="game-info game-info-classic">
+            <p class="game-info-subtitle">
+                @(Model?.Request?.Salon_Sance?.Salon?.Title) -
+                <time> @(DateTimeConvertor.ToShamsi(Model?.Request?.Salon_Sance?.Sance?.Date))</time>
+            </p>
+            <h3 class="game-info-title"> @(PublicFunction.EnumPersianName((Enums.Request_Type)Model?.Request?.Type))</h3>
+            <div class="game-info-main">
+                <div class="game-info-team game-info-team-first">
+                    <figure>
+                        <img src="~/Content/NewContent/images/team-sportland-75x99.png" alt="" width="75" height="99">
+                    </figure>
+                    <div class="game-result-team-name">@(Model?.Request?.Team?.Name)</div>
+                    <div class="game-result-team-country">همدان</div>
+                </div>
+                <div class="game-info-middle">
+                    <div class="game-result-score-wrap">
+                        <div class="game-info-score @(Model?.HostTeamScore>Model?.GuestTeamScore?"game-result-team-win":"")">@(Model?.HostTeamScore)</div>
+                        <div class="game-info-score @(Model?.GuestTeamScore>Model?.HostTeamScore?"game-result-team-win":"")">@(Model?.GuestTeamScore)</div>
+                    </div>
+                    <div class="game-result-divider-wrap"><span class="game-info-team-divider">VS</span></div>
+                </div>
+                <div class="game-info-team game-info-team-second">
+                    <figure>
+                        <img src="~/Content/NewContent/images/team-dream-team-91x91.png" alt="" width="77" height="99">
+                    </figure>
+                    <div class="game-result-team-name">@(Model?.Request?.Team1?.Name)</div>
+                    <div class="game-result-team-country">ملایر</div>
+                </div>
+            </div>
+            <!-- Table Game Info-->
+            <div class="table-game-info-wrap">
+                <span class="table-game-info-title">آمار بازی<span></span></span>
+                <div class="table-game-info-main table-custom-responsive">
+                    <table class="table-custom table-game-info">
+                        <tbody>
+                            <tr>
+                                <td class="table-game-info-number">10(9)</td>
+                                <td class="table-game-info-category">شوت با هدف</td>
+                                <td class="table-game-info-number">10(9)</td>
+                            </tr>
+                            <tr>
+                                <td class="table-game-info-number">4</td>
+                                <td class="table-game-info-category">ضربات کرنر</td>
+                                <td class="table-game-info-number">4</td>
+                            </tr>
+                            <tr>
+                                <td class="table-game-info-number">1</td>
+                                <td class="table-game-info-category">سیو</td>
+                                <td class="table-game-info-number">1</td>
+                            </tr>
+                            <tr>
+                                <td class="table-game-info-number">2</td>
+                                <td class="table-game-info-category">کارت های زرد</td>
+                                <td class="table-game-info-number">0</td>
+                            </tr>
+                            <tr>
+                                <td class="table-game-info-number">1</td>
+                                <td class="table-game-info-category">کارت های قرمز</td>
+                                <td class="table-game-info-number">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="progress-bar-main progress-bar-rotate-90">
+                <div class="progress-bar-team progress-bar-team-first progress-bar-primary">
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar-js progress-bar-radial animated">
+                            <svg class="progress-circle-bar" x="0" y="0" width="150" height="150" viewBox="0 0 150 150">
+                                <circle class="progress-circle-bg" cx="75" cy="75" r="72"></circle>
+                                <circle class="progress-circle-fg clipped" cx="75" cy="75" r="72" clip-path="url(#tddewojg)"></circle>
+                                <clipPath id="tddewojg"><path d="M 75 75 L 75 -33 A 108 108 0 0 1 75 183 A 108 108 0 0 1 -25.41586047593114 35.24254831005475"></path></clipPath>
+                            </svg>
+                            <div class="progress-circle-counter">81</div>
+                        </div>
+                        <p class="progress-bar-title">دقت شوت</p>
+                    </div>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar-js progress-bar-radial animated">
+                            <svg class="progress-circle-bar" x="0" y="0" width="150" height="150" viewBox="0 0 150 150">
+                                <circle class="progress-circle-bg" cx="75" cy="75" r="72"></circle>
+                                <circle class="progress-circle-fg clipped" cx="75" cy="75" r="72" clip-path="url(#cimhkmbk)"></circle>
+                                <clipPath id="cimhkmbk"><path d="M 75 75 L 75 -33 A 108 108 0 0 1 75 183 A 108 108 0 0 1 -27.71410375987658 108.37383539249433"></path></clipPath>
+                            </svg>
+                            <div class="progress-circle-counter">70</div>
+                        </div>
+                        <p class="progress-bar-title">دقت پاس</p>
+                    </div>
+                </div>
+                <div class="progress-bar-divider"></div>
+                <div class="progress-bar-team progress-bar-team-second team2-blue">
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar-js progress-bar-radial animated">
+                            <svg class="progress-circle-bar" x="0" y="0" width="150" height="150" viewBox="0 0 150 150">
+                                <circle class="progress-circle-bg" cx="75" cy="75" r="72"></circle>
+                                <circle class="progress-circle-fg clipped" cx="75" cy="75" r="72" clip-path="url(#vkdulkrd)"></circle>
+                                <clipPath id="vkdulkrd"><path d="M 75 75 L 75 -33 A 108 108 0 0 1 75 183 A 108 108 0 0 1 6.158209107141516 -8.215430219785247"></path></clipPath>
+                            </svg>
+                            <div class="progress-circle-counter">89</div>
+                        </div>
+                        <p class="progress-bar-title">دقت پاس</p>
+                    </div>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar-js progress-bar-radial animated">
+                            <svg class="progress-circle-bar" x="0" y="0" width="150" height="150" viewBox="0 0 150 150">
+                                <circle class="progress-circle-bg" cx="75" cy="75" r="72"></circle>
+                                <circle class="progress-circle-fg clipped" cx="75" cy="75" r="72" clip-path="url(#luaoyutc)"></circle>
+                                <clipPath id="luaoyutc"><path d="M 75 75 L 75 -33 A 108 108 0 0 1 172.72132166633008 120.98416348902785"></path></clipPath>
+                            </svg>
+                            <div class="progress-circle-counter">32</div>
+                        </div>
+                        <p class="progress-bar-title">دقت شوت</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

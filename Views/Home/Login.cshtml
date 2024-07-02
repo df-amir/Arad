@@ -1,0 +1,75 @@
+﻿<div dir="rtl">
+@model Arad.Models.Account
+<section class="section section-variant-1 bg-gray-100">
+    <div class="container">
+        <div class="row row-50 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="card-login-register" id="card-l-r">
+                    <div class="card-top-panel">
+                        <div class="card-top-panel-left">
+                            <h5 class="card-title card-title-login" style="left:500px;s">ورود</h5>
+                            <h5 class="card-title card-title-register">ثبت‌نام</h5>
+                        </div>
+                        <div class="card-top-panel-right">
+                            <span class="card-subtitle"><span class="card-subtitle-login">ورود</span><span class="card-subtitle-register">ثبت‌نام</span></span>
+                            <button class="card-toggle" data-custom-toggle="#card-l-r"><span class="card-toggle-circle"></span></button>
+                        </div>
+                    </div>
+                    <div class="card-form card-form-login" ">
+                        @using (Html.BeginForm("Login", "Home"))
+                        {
+                            <div class="form-wrap">
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-input", @placeholder = "شماره تلفن" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-input", @placeholder = "رمز عبور" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <label class="checkbox-inline checkbox-inline-lg checkbox-light">
+                                <input name="input-checkbox-1" value="checkbox-1" type="checkbox">مرا به خاطر بسپار
+                            </label>
+                            <button class="button button-lg button-primary button-block" type="submit">ورود</button>
+                        }
+                    </div>
+                    <div class="card-form card-form-register">
+                        @using (Html.BeginForm("Register", "Home"))
+                        {
+                            <form class="rd-form rd-mailform" method="post" action="@Url.Action("Register", "Home")">
+                                <div class="form-wrap">
+                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-input", @placeholder = "شماره تلفن" } })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-input", @placeholder = "رمز عبور" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-wrap">
+                                    <label class="form-label" for="form-login-role-1">نقش</label>
+                                    <select class="form-input" id="form-login-role-1" name="RoleId">
+                                        <option value="2">مالک مجموعه ورزشی</option>
+                                        <option value="3">مالک تیم</option>
+                                        <option value="4">مربی</option>
+                                        <option value="5">ورزشکار</option>
+                                        <option value="6">داور</option>
+                                    </select>
+                                </div>
+                                <button class="button button-lg button-primary button-block" id="RegisterForm" type="submit">ثبت نام</button>
+                            </form>
+                        }
+
+                        @*<div class="group-sm group-sm-justify group-middle">
+                            <a class="button button-google button-icon button-icon-left button-round" href="#"><span class="icon fa fa-google-plus"></span><span>Google+</span></a>
+                            <a class="button button-twitter button-icon button-icon-left button-round" href="#"><span class="icon fa fa-twitter"></span><span>Twitter</span></a>
+                            <a class="button button-facebook button-icon button-icon-left button-round" href="#"><span class="icon fa fa-facebook"></span><span>Facebook</span></a>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
